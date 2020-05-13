@@ -27,8 +27,8 @@
     </ul>
   </div>
 
-  <span class="hello-msg">Hello, FixIt</span>
+  <span class="hello-msg">Hello, {{request.user}}</span>
   <span><a class="btn btn-outline-success hello-msg" href="{% url 'login' %}">Login</a></span>
-  <span ><a class="btn btn-outline-danger hello-msg" href="">Logout</a></span>
+  <span ><a class="btn btn-outline-danger hello-msg" href="{% url 'logout' %}">Logout</a></span>
 
 </nav>
