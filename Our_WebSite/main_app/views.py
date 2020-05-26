@@ -14,13 +14,8 @@ def register_page(request):
     if request.method == 'POST':
         form_ = CreateUserForm(request.POST)
         if form_.is_valid():
-            user = form_.save()
+            form_.save()
             username = form_.cleaned_data.get('username')
-            email = form_.cleaned_data.get('email')
-
-            group = Group.objects.get(name='user')
-            user.groups.add(group)
-            UserModel.objects.create(user=user, name=username, email=email)
 
             messages.success(request, "Account was created for " + username)
             return redirect('login')
@@ -75,7 +70,6 @@ def account_settings(request):
         'form': form_
     }
     return render(request, 'main_app/account_settings.html', context)
-
 
 
 def admin_page(request):
